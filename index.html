@@ -45,7 +45,6 @@
         </div>
         <div class="clear"></div>
     </div>
-
     <script>
         MP.api.ready(function() {
             // DAU
@@ -61,7 +60,6 @@
                     chartType: 'line'
                 });
             });
-   
             // MAU
             MP.api.segment('Session-Mobile-Log into app', null, {
                 from: moment().subtract(12, 'months'),
