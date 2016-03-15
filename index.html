@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
@@ -25,7 +24,7 @@
             margin-right: 20px;
         }
         .chart {
-            width: 450px;
+            width: 900px;
         }
         .clear {
             clear: both;
@@ -33,25 +32,40 @@
     </style>
   </head>
   <body class="mixpanel-platform-body">
-    <h1>DAU & MAU</h1>
+    <h1>KPI Dashboard</h1>
     <div class="mixpanel-platform-section">
-        <h2>Active Users</h2>
+        <h2>Active users</h2>
         <div class="inline_chart_wrapper">
-            <h3>DAU over the last 30 days</h3>
+            <h3>DAU over the last 7 days</h3>
             <div id="DAU_graph" class="chart"></div>
         </div>
         <div class="inline_chart_wrapper">
-            <h3>MAU over the last 12 months</h3>
+            <h3>MAU over the last 3 months</h3>
             <div id="MAU_graph" class="chart"></div>
         </div>
         <div class="clear"></div>
+    </div>
+    <div class="mixpanel-platform-section">
+        <h2>User details</h2>
+        <div class="inline_chart_wrapper">
+            <h3>Top countries today</h3>
+            <div id="user_countries" class="chart"></div>
+        </div>
+        <div class="inline_chart_wrapper">
+            <h3>Top languages today</h3>
+            <div id="user_languages" class="chart"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="mixpanel-platform-section">
+        <h2>Retained users</h2>
     </div>
 
     <script>
         MP.api.ready(function() {
             // DAU
             MP.api.segment('Session-Mobile-Log into app', null, {
-                from: moment().subtract(30, 'days'),
+                from: moment().subtract(7, 'days'),
                 to: moment(),
                 type: 'unique',
                 unit: 'day',
@@ -65,7 +79,7 @@
 
             // MAU
             MP.api.segment('Session-Mobile-Log into app', null, {
-                from: moment().subtract(12, 'months'),
+                from: moment().subtract(3, 'months'),
                 to: moment(),
                 type: 'unique',
                 unit: 'month',
@@ -76,6 +90,7 @@
                     chartType: 'line'
                 });
             });
+
         });
     </script>
   </body>
