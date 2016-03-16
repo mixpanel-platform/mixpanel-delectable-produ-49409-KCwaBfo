@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
@@ -8,14 +9,17 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         h2 {
             font-size: 20px;
             margin-bottom: 16px;
         }
+
         h3 {
             font-size: 16px;
             margin-bottom: 10px;
         }
+
         .inline_chart_wrapper {
             float: left;
             margin-right: 20px;
@@ -27,8 +31,11 @@
             clear: both;
         }
     </style>
+  </head>
   <body class="mixpanel-platform-body">
     <h1>KPI Dashboard</h1>
+    <div class="mixpanel-platform-section">
+        <h2>Active users</h2>
         <div class="inline_chart_wrapper">
             <h3>DAU over the last 30 days</h3>
             <div id="DAU_graph" class="chart"></div>
@@ -38,6 +45,7 @@
             <div id="MAU_graph" class="chart"></div>
         </div>
         <div class="clear"></div>
+    </div>
     <script>
         MP.api.ready(function() {
             // DAU
@@ -53,6 +61,7 @@
                     chartType: 'line'
                 });
             });
+
             // MAU
             MP.api.segment('Session-Mobile-Log into app', null, {
                 from: moment().subtract(12, 'months'),
